@@ -185,7 +185,7 @@ Last login: Mon Oct 19 02:21:53 2020 from xxx.xxx.xxx.xxx
 ```
 Note that once the job terminates, the SSH connection to the compute node will also be terminated automatically.
 
-### Ressource allocation
+### Resource allocation
 A user may want to execute an interactive session on a compute node, i.e. in order to issue commands rather than run a pre-specified script. This can be done with the following command:
 
 ```console
