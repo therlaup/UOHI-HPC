@@ -354,7 +354,7 @@ From our workstation, we can now open a browser session using the link we found 
 <!-- CONTACT -->
 ## Contact
 
-ptheriault Theriault-Lauzier - ptheriault@ottawaheart.ca
+Pascal Theriault-Lauzier - ptheriault@ottawaheart.ca
 
 
 <!-- ACKNOWLEDGEMENTS -->
