@@ -139,7 +139,7 @@ NodeName=ohi-hpc2-keon01 Arch=x86_64 CoresPerSocket=24
    CurrentWatts=0 AveWatts=0
    ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s
 ```
-We can created a small demonstrated script `test.sh`:
+We created a small demonstrated script `test.sh`:
 ```bash
 #!/bin/bash
 
@@ -158,28 +158,28 @@ ohi-hpc2-keon01
 Wed Oct 21 09:36:56 UTC 2020
 Running program on 2 CPU cores
 ```
-During the execution of the above job, we can issue the following command from another terminal:
+During the execution of the above job, we can issue the `squeue` command from another terminal:
 ```console
 [ptheriault@ohi-hpc2-access ~]$ squeue
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON) 
                155     batch  test.sh ptheriau  R       0:03      1 ohi-hpc2-keon01 
 ```
 
-A job can be cancelled using the command where 155 is the JOB ID listed in the output of `squeue` command:
+A job can be cancelled using the `scancel` command where 155 is the JOB ID listed in the output of `squeue` command:
 ```console
 [ptheriault@ohi-hpc2-access ~]$ scancel 155
 ```
 
-Once a user has a job running on a particular node, they are allowed to SSH directly into the node in order to monitor the progress of the job if needed. This can also be helpful if a user needs to use SSH tunneling to run a development tool on the cluster such as [Jupyter Notebook](https://jupyter.org/). For example, if we try to SSH into `ohi-hpc2-keon01` without a job running, we get the message:
+Once users have jobs running on a particular node, they are allowed to SSH directly into the node in order to monitor the progress of the job. This can also be helpful if a user needs to use SSH tunneling to run a development tool on the cluster such as [Jupyter Notebook](https://jupyter.org/). For example, if we try to SSH into `ohi-hpc2-keon01` without a job running, we get the message:
 ```console
-pascal@Pascal-Ubuntu:~$ ssh ptheriault@ohi-hpc2-keon01
+[ptheriault@my-workstation:~]$ ssh ptheriault@ohi-hpc2-keon01
 Access denied by pam_slurm_adopt: you have no active jobs on this node
 Connection closed by xxx.xxx.xxx.xxx port 22
-pascal@Pascal-Ubuntu:~$ 
+[ptheriault@my-workstation:~]$ 
 ```
 Once a job is running, we can login:
 ```console
-pascal@Pascal-Ubuntu:~$ ssh ptheriault@ohi-hpc2-keon01
+[ptheriault@my-workstation:~]$ ssh ptheriault@ohi-hpc2-keon01
 Last login: Mon Oct 19 02:21:53 2020 from xxx.xxx.xxx.xxx
 [ptheriault@ohi-hpc2-keon01 ~]$ 
 ```
@@ -340,7 +340,7 @@ Usage example: change_mofed_version.sh 4.5-1.0.1
 
 In order to connect to the Jupyter Lab session, we must create an SSH tunnel from our workstation to the compute node:
 ```console
-pascal@Pascal-Ubuntu:~$ ssh -CNL 8888:localhost:8888 ptheriault@ohi-hpc2-keon01
+[ptheriault@my-workstation:~]$ ssh -CNL 8888:localhost:8888 ptheriault@ohi-hpc2-keon01
 
 ```
 If this is correctly running, no output should be shown.
@@ -352,7 +352,7 @@ From our workstation, we can now open a browser session using the link we found 
 <!-- CONTACT -->
 ## Contact
 
-Pascal Theriault-Lauzier - ptheriault@ottawaheart.ca
+ptheriault Theriault-Lauzier - ptheriault@ottawaheart.ca
 
 
 <!-- ACKNOWLEDGEMENTS -->
