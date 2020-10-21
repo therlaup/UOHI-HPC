@@ -88,7 +88,7 @@ The `Q-drive` is stored on a virtual machine backed up as per UOHI policy. It is
         * common
     * ...
 
-Each project leader is free to organize the storage space as they see fit. However, we suggest creating a subdirectory for each user as shown above as a workspace.
+Each project leader is free to organize the storage space as they see fit. However, we suggest creating a subdirectory for each user as shown above. These subdirectories can be used a a workspace.
 
 
 ### Staging (scratch) space
@@ -100,7 +100,7 @@ Each access node is configured with the following directories:
     * fast/ : 1.5TB of NVMe PCIe 4.0 storage
     * large/ : 8TB of non-NVMe SSD storage
 
-Data placed within the `/staging` directory is not shared between compute nodes. Users who require high-IOPS storage during a job would copy their data to the staging space, e.g. `/staging/fast/<username>/`, then execute their job and at termination, copy the results back to the `Q-drive` for long-term storage. We provide an example script that demonstrate this concept.
+Data placed within the `/staging` directory is not shared between compute nodes. Users who require high-IOPS storage during a job would copy their data to the staging space, e.g. `/staging/fast/<username>/`, then execute their job and at termination, copy the results back to the `Q-drive` for long-term storage. We will in the future provide an example script that demonstrate this concept.
 
 ### Home directory
 
@@ -305,7 +305,7 @@ export SINGULARITY_TMPDIR=$SCRATCH
 
 srun /usr/local/bin/singularity exec --nv \
         --bind $PROJECT_DIR,$SCRATCH \
-        $PROJECT_DIR/singularity_containers/tf_od_api_tf2_nv_custom.sif \
+        $PROJECT_DIR/singularity_containers/nvcr_tf_20.06.sif \
         jupyter lab --ip=0.0.0.0 --port=8888 --allow-root \
         --notebook-dir $PROJECT_DIR
 ```
