@@ -16,7 +16,7 @@ Documentation and demonstration script for use with University of Ottawa Heart I
 ## Table of Contents
 
 * [About the Project](#about-the-project)
-* [Intrastructure](#intrastructure)
+* [Infrastructure](#intrastructure)
 * [Access](#access)
 * [Filesystem](#filesystem)
     * [Q-drive](#q-drive)
@@ -46,7 +46,7 @@ The cluster is composed of nodes, i.e. separate computers. Users interact with t
     <img src="images/infrastructure.png" width="80%"/>
 </p>
 
-The system currently has one compute node only, which is a Dell R7525. It is equiped as follows:
+The system currently has one compute node only, which is a Dell R7525. It is equipped as follows:
 * Two AMD EPYC 7402 2.8GHz base (3.35GHz boost), 128M cache, 24 core/48 threads for a total of 48 cores/96 threads
 * 256 GB of DDR4-3200 memory
 * One 1.6TB NVMe U.2 drive
@@ -55,7 +55,7 @@ The system currently has one compute node only, which is a Dell R7525. It is equ
 
 ## Access
 
-Access to the cluster is managed by UOHI IT department using users `ottawaheart` credentials. Users must be added to the appropriate workgroups in order to gain access to the cluster. This can be requested from the administrator. 
+Access to the cluster is managed by UOHI IT department using users `ottawaheart` credentials. Users must be added to the appropriate workgroup in order to gain access to the cluster. This can be requested from the administrator. 
 
 The access node is open for SSH login from within the UOHI network or using VPN access.
 
@@ -64,14 +64,14 @@ From a Linux or MacOS workstation, the following command can be used to login:
 ssh <username>@ohi-hpc2-access
 ```
 
-From a Windows workstation, a third-party SSH client can be installsed such as [PuTTY](https://www.putty.org/).
+From a Windows workstation, a third-party SSH client can be installed such as [PuTTY](https://www.putty.org/).
 
 After authentication, users will be able to use issue commands to the Slurm scheduler to order to initiate jobs on the cluster. 
 
 ## Filesystem
 
 ### Q-drive
-The cluster shares a common network filesystem, i.e. the `Q-drive` accessible at `/q/` from within the cluster and as drive `Q:\` from the Windows UOHI network. This drive is meant for long term storage, i.e. beyond the execution of a job. The `Q-drive` is an ideal location to store data and code that will be used accross the HPC cluster.
+The cluster shares a common network filesystem, i.e. the `Q-drive` accessible at `/q/` from within the cluster and as drive `Q:\` from the Windows UOHI network. This drive is meant for long term storage, i.e. beyond the execution of a job. The `Q-drive` is an ideal location to store data and code that will be used across the HPC cluster.
 
 The `Q-drive` is stored on a virtual machine backed up as per UOHI policy. It is connected via a 10Gb interface to the access and compute nodes. The protocol used is CIFS in order to provide access from both Linux and Windows systems. Directories within the `Q-drive` correspond to different approved projects and each have 2TB of allocated storage:
 
@@ -91,7 +91,7 @@ Each project leader is free to organize the storage space as they see fit. Howev
 
 ### Staging (scratch) space
 
-The `Q-drive` being a network attached storage facility, the transfer speed and input/output operations per seconds is limited. In order to have rapid file access and avoid bottlenecks during a job execution, each compute node is equiped with SSD and NVMe disks that can be used for temporary storage but with fast access speed.
+The `Q-drive` being a network attached storage facility, the transfer speed and input/output operations per seconds is limited. In order to have rapid file access and avoid bottlenecks during a job execution, each compute node is equipped with SSD and NVMe disks that can be used for temporary storage but with fast access speed.
 
 Each access node is configured with the following directories:
 * /staging
@@ -102,11 +102,11 @@ Data placed within the `/staging` directory is not shared between compute nodes.
 
 ### Home directory
 
-The `/home/<username>` directory on both the access and compute nodes is also shared accross the cluster but data placed there is typically only accessible to individual users. We do not suggest using the home directory for long-term storage as there is limited storage space available.
+The `/home/<username>` directory on both the access and compute nodes is also shared across the cluster but data placed there is typically only accessible to individual users. We do not suggest using the home directory for long-term storage as there is limited storage space available.
 
 ## Jobs
 
-The HPC cluster uses Slurm as a job scheduler. It allows users to request ressources from the HPC cluster according to the needs of their specific job for a prespecified amount of time.
+The HPC cluster uses Slurm as a job scheduler. It allows users to request resources from the HPC cluster according to the needs of their specific job for a pre-specified amount of time.
 
 Slurm provides several commands that can be issued to request, cancel and monitor jobs. Slurm manages the queue of jobs being requested by users. The user commands include: sacct, salloc, sattach, sbatch, sbcast, scancel, scontrol, sinfo, sprio, squeue, srun, sshare, sstat, strigger and sview. All of the commands can run anywhere in the cluster. An overview of command functionalities can be found at [Slurm Quickstart](https://slurm.schedmd.com/quickstart.html).
 
@@ -186,7 +186,7 @@ Last login: Mon Oct 19 02:21:53 2020 from xxx.xxx.xxx.xxx
 Note that once the job terminates, the SSH connection to the compute node will also be terminated automatically.
 
 ### Ressource allocation
-A user may want to execute an interactive session on a compute node, i.e. in order to issue commands rather than run a prespecifed script. This can be done with the following command:
+A user may want to execute an interactive session on a compute node, i.e. in order to issue commands rather than run a pre-specified script. This can be done with the following command:
 
 ```console
 [ptheriault@ohi-hpc2-access ~]$ srun --nodes=1 --time=01:00:00 --mem=8GB --cpus-per-task=4 --gres=gpu:1 --pty bash
@@ -207,7 +207,7 @@ We note that the previous commands had some supplemental options.
 * `--gres=gpu:1`: requested 1 GPU accelerator
 * `--pty`: specifies that the execution will be in pseudo terminal mode such that output is directed to the screen
 
-The number of GPU requested can be selected from 1 to 3 given the ressources available. For example, we can request a single GPU (`--gres=gpu:1`) and use the `nvidia-smi` system management interface command to list the available GPU:
+The number of GPU requested can be selected from 1 to 3 given the resources available. For example, we can request a single GPU (`--gres=gpu:1`) and use the `nvidia-smi` system management interface command to list the available GPU:
 ```console
 [ptheriault@ohi-hpc2-access ~]$ srun --nodes=1 --time=01:00:00 --mem=8GB --cpus-per-task=4 --gres=gpu:1 --pty bash
 [ptheriault@ohi-hpc2-keon01 ~]$ nvidia-smi
@@ -274,9 +274,9 @@ Wed Oct 21 10:16:11 2020
 
 *"A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. Containerized software will always run the same, regardless of the infrastructure."* (source: https://www.docker.com/resources/what-container)
 
-In our case a container environment is particularly attactive because users needs certain libraries/software for their code to run. In such a case, they can create a container, which packages all those dependencies and can run on their own machine just as well as on the cluster.
+In our case a container environment is particularly attractive because users may need certain libraries/software for their code to run. In such a case, they can create a container, which packages all those dependencies and can run on their own machine just as well as on the cluster.
 
-[Singularity](https://sylabs.io/singularity/) is a secure container environment built for HPC applications. It is installed on the cluster. The main difference between Singularity and other container environment such as Docker is that users are limited to executing tasks without full root access to the system. Singularity is also useful because it stores the container environment as a single `.sif` file that can easily be transfered between computers. 
+[Singularity](https://sylabs.io/singularity/) is a secure container environment built for HPC applications. It is installed on the cluster. The main difference between Singularity and other container environment such as Docker is that users are limited to executing tasks without full root access to the system. Singularity is also useful because it stores the container environment as a single `.sif` file that can easily be transferred between computers. 
 
 ![](https://tin6150.github.io/psg/fig/vm_vs_container.png)
 
