@@ -23,6 +23,8 @@ Documentation and demonstration script for use with University of Ottawa Heart I
     * [Staging (scratch) space](#staging-(scratch)-space)
     * [Home directory](#home-directory)
 * [Jobs](#jobs)
+    * [Basic example job](#basic-example-job)
+    * [Resource allocation](#resource-allocation)
 * [Container environment](#container-environment)
 * [Contact](#contact)
 * [Acknowledgements](#acknowledgements)
